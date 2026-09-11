@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="CallHardwareModules" Id="{d53bfde7-ef31-4033-a59e-17a8585cdf25}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION CallHardwareModules : BOOL //only purpose of this function is to call modules from Hardware]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[robot3();
+robot4();
+
+skidA22Left(slots := skidHmiA22Left);
+skidA22Right(slots := skidHmiA22Right);
+
+magazineA22Left(slots := magazineHmiA22Left);
+magazineA22Right(slots := magazineHmiA22Right);
+
+wrapperA22();
+benderA22Left();
+
+verticalDriveA22Left();
+verticalDriveA22Right();
+
+horizontalDriveA22Left();
+horizontalDriveA22Right();
+
+pistonA22Bottom();
+
+insertionA22Left(
+	enable:= TRUE, 
+	slider:= verticalDriveA22Left, 
+	screw:= horizontalDriveA22Left, 
+	contact=> , 
+	active=> , 
+	error=> , 
+	home=> , 
+	homingComplete=> , 
+	sliderPos=> );
+	
+insertionA22Right(
+	enable:= TRUE, 
+	slider:= verticalDriveA22Right, 
+	screw:= horizontalDriveA22Right, 
+	contact=> , 
+	active=> , 
+	error=> , 
+	home=> , 
+	homingComplete=> , 
+	sliderPos=> );]]></ST>
+    </Implementation>
+    <LineIds Name="CallHardwareModules">
+      <LineId Id="57" Count="9" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="99" Count="1" />
+      <LineId Id="98" Count="0" />
+      <LineId Id="68" Count="2" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="77" Count="9" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="87" Count="0" />
+      <LineId Id="89" Count="8" />
+      <LineId Id="88" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
