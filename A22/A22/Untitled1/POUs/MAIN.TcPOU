@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="MAIN" Id="{bb23f57b-bfaa-4807-862f-695fb779bd1d}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	execute : BOOL;
+	manualStep : BOOL := TRUE;
+	manualSuction : BOOL := FALSE;
+	stop : BOOL;
+	
+	moduleA22 : CardboardCornerGuardEx;
+END_VAR
+VAR
+	test : BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[SetupHardware();
+CallHardwareModules(); //start program with hardware call
+
+moduleA22(
+	execute:= execute, 
+	stop:= stop, 
+	manualStep:= manualStep, 
+	manualSuction:= manualSuction, 
+	
+	benderLeft:= benderA22Left, 
+	robotLeft:= robot3, 
+	robotRight:= robot4, 
+	skidLeft:= skidA22Left, 
+	skidRight:= skidA22Right, 
+	magazineLeft:= magazineA22Left, 
+	magazineRight:= magazineA22Right, 
+	wrapper:= wrapperA22, 
+	horizontalDriveLeft:= horizontalDriveA22Left, 
+	horizontalDriveRight:= horizontalDriveA22Right, 
+	verticalDriveLeft:= verticalDriveA22Left, 
+	verticalDriveRight:= verticalDriveA22Right, 
+	pistonBottom:= pistonA22Bottom, 
+	suctionTopLeft:= suctionA22TopLeft, 
+	suctionTopRight:= suctionA22TopRight, 
+	suctionBottomLeft:= suctionA22BottomLeft, 
+	suctionBottomRight:= suctionA22BottomRight, 
+	
+	generalError=> test, 
+	failLeft=> test, 
+	failRight=> test);
+
+CallHardwareModules(); //end program with hardware call]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="1035" Count="7" />
+      <LineId Id="1075" Count="0" />
+      <LineId Id="1043" Count="16" />
+      <LineId Id="1076" Count="0" />
+      <LineId Id="1060" Count="3" />
+      <LineId Id="983" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
